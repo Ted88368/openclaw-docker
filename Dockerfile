@@ -3,6 +3,8 @@ FROM node:22-trixie
 LABEL org.opencontainers.image.source="https://github.com/phioranex/openclaw-docker"
 LABEL org.opencontainers.image.description="Pre-built OpenClaw (Clawbot) Docker image"
 LABEL org.opencontainers.image.licenses="MIT"
+ARG TARGETPLATFORM
+LABEL org.opencontainers.image.architecture=${TARGETPLATFORM}
 
 # Install system dependencies (including Homebrew prerequisites)
 RUN apt-get update && apt-get install -y \

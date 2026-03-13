@@ -1,3 +1,5 @@
+# OpenClaw (Clawbot) Docker Compose
+# Supports multi-architecture (AMD64/ARM64)
 services:
   openclaw-gateway:
     image: ghcr.io/phioranex/openclaw-docker:latest
