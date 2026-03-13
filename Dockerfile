@@ -1,4 +1,4 @@
-FROM node:22-bookworm
+FROM node:22-trixie
 
 LABEL org.opencontainers.image.source="https://github.com/phioranex/openclaw-docker"
 LABEL org.opencontainers.image.description="Pre-built OpenClaw (Clawbot) Docker image"
