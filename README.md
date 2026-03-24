@@ -71,7 +71,9 @@ $env:TEMP_INSTALL_SCRIPT = irm https://raw.githubusercontent.com/phioranex/openc
 
 ```bash
 # Pull the image
-docker pull ghcr.io/phioranex/openclaw-docker:latest
+# docker pull ghcr.io/phioranex/openclaw-docker:latest
+
+docker build -t openclaw-multiarch-test .
 
 # Run onboarding (first time setup)
 docker run -it --rm \
