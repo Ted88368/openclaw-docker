@@ -73,6 +73,7 @@ RUN mkdir -p /home/node/.openclaw /home/node/.openclaw/workspace \
     && chown -R node:node /home/node /app \
     && chmod -R 755 /home/node/.openclaw \
     && usermod -aG linuxbrew node \
+    && echo 'node ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
     && chmod -R g+w /home/linuxbrew/.linuxbrew \
     && chown -R node:node /usr/local/lib/node_modules \
     && chown -R node:node /usr/local/bin
