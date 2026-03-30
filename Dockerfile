@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
     file \
     sudo \
     jq \
+    cron \
+    systemd \
+    systemd-sysv \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Bun (required for build)
@@ -87,6 +90,10 @@ RUN mkdir -p /usr/local/share/ca-certificates && \
     chmod 755 /usr/local/share/ca-certificates && \
     chmod 644 /usr/local/share/ca-certificates/ca-certificates.crt
 
+# Copy and set up the entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 USER node
 
 # Install Playwright browsers for the node user
@@ -101,5 +108,5 @@ ENV HOMEBREW_NO_AUTO_UPDATE=1
 ENV HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # Default command
-ENTRYPOINT ["node", "/app/dist/index.js"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh", "node", "/app/dist/index.js"]
 CMD ["--help"]
